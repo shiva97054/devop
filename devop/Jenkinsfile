@@ -1,4 +1,4 @@
-pipeline {
+[Opipeline {
     agent any // Runs on any available agent
 
     environment {
