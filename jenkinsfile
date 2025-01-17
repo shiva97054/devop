@@ -1,0 +1,54 @@
+pipeline {
+    agent any // Runs on any available agent
+
+    environment {
+        // Define environment variables here
+        MY_ENV_VAR = 'Hello, Jenkins'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the source code
+                git 'https://github.com/shiva97054/devop.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building the project..."
+                // You can replace this with actual build steps (e.g., mvn, npm)
+                sh 'echo Building the project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+                // You can replace this with actual test steps (e.g., npm test, mvn test)
+                sh 'echo Running tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying to the server..."
+                // Replace with actual deployment steps
+                sh 'echo Deploying to the server...'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'This will run after the pipeline completes, regardless of success or failure'
+        }
+        success {
+            echo 'This will run only if the pipeline succeeds'
+        }
+        failure {
+            echo 'This will run only if the pipeline fails'
+        }
+    }
+}
+
