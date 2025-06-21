@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mkdir -p build'  // ✅ Ensure build directory exists
+                sh 'java -jar my-web-app.jar -o build/my-web-app.jar'
+            }
+        }
+    }
+}
+
